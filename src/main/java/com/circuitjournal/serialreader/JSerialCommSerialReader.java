@@ -127,11 +127,18 @@ public class JSerialCommSerialReader implements SerialReader, SerialPortDataList
       serialPort.removeDataListener();
       serialPort.closePort();
       serialPort = null;
+      serialInput = null;
+      serialOutput = null;
     }
   }
 
   public synchronized boolean isListening() {
     return serialPort != null;
+  }
+  
+  @Override
+  public synchronized OutputStream getOutputStream() {
+    return serialOutput;
   }
 
 
@@ -161,7 +168,4 @@ public class JSerialCommSerialReader implements SerialReader, SerialPortDataList
     }
     return portIdentifierMap;
   }
-
-
-
 }

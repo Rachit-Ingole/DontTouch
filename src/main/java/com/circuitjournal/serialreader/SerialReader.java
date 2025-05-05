@@ -1,5 +1,6 @@
 package com.circuitjournal.serialreader;
 
+import java.io.OutputStream;
 import java.util.List;
 
 public interface SerialReader {
@@ -17,5 +18,10 @@ public interface SerialReader {
     void startListening(String portName, Integer baudRate);
     void stopListening();
     boolean isListening();
-
+    
+    /**
+     * Get the output stream for sending data to the device
+     * @return OutputStream or null if not connected
+     */
+    OutputStream getOutputStream();
 }
